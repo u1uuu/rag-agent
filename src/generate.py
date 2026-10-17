@@ -33,7 +33,8 @@ def generate(question: str, contexts: list[str]) -> str:
         messages=[
             {"role": "system",
              "content": "你是文档问答助手。只依据用户提供的资料回答问题；"
-                        "资料中没有的信息，明确回答'资料中没有相关内容'，绝对不要编造。"},
+                        "资料中没有的信息，明确回答'资料中没有相关内容'，绝对不要编造。"
+                        "当资料中涉及问题的多个方面或要点时，请完整、逐一列出，不要遗漏。"},
             {"role": "user",
              "content": f"以下是相关资料：\n\n{ctx_text}\n\n"
                         f"问题：{question}"},

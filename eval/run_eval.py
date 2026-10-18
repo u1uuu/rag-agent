@@ -54,7 +54,7 @@ def build_index():
         print(f"  读取文档: {fn}")
     chunks = []
     for d in docs:
-        chunks.extend(split_into_chunks(d))
+        chunks.extend(split_into_chunks(d, max_chars=250))
     print(f"  共切 {len(chunks)} 块，正在向量化...")
     vecs = embed(chunks)
     return chunks, vecs
@@ -96,7 +96,7 @@ def main() -> None:
     for q in questions:
         q_text = q["question"]
         qv = embed([q_text])[0]
-        hits = retrieve(qv, vecs, chunks, top_k=3)
+        hits = retrieve(qv, vecs, chunks, top_k=5)
         top_score = round(hits[0][1], 3) if hits else 0.0
         answer = generate(q_text, [c for c, _ in hits])
         verdict = judge(q_text, q["answer"], answer)

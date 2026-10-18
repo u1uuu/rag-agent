@@ -63,7 +63,7 @@ def main() -> None:
             print("再见。")
             break
         q_vec = embed([q])[0]
-        hits = retrieve(q_vec, chunk_vecs, chunks, top_k=3)
+        hits = retrieve(q_vec, chunk_vecs, chunks, top_k=5)
         contexts = [c for c, _ in hits]
         answer = generate(q, contexts)
         print(f"\n答案: {answer}")

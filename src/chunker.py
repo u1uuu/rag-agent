@@ -14,7 +14,7 @@
 import re
 
 # 默认参数（后续可调）
-DEFAULT_MAX_CHARS = 500   # 单块最大字符数
+DEFAULT_MAX_CHARS = 250   # 单块最大字符数（自动调参最优：见 eval/tune.py）
 DEFAULT_OVERLAP = 50      # 相邻块重叠字符数
 
 
